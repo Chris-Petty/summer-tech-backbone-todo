@@ -19,6 +19,7 @@
             //
             // NOTE: We want to persist the change too! To do this, we can use the `this.save();`
             // function.
+            this.set('complete', !this.get('complete'))
         },
 
         toggleEditing: function () {

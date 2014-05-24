@@ -23,6 +23,7 @@
             // the update to appear in the DOM). We need to view to listen to the model changes,
             // and re-render itself when those changes occur. We can accomplish this by using the
             // `this.listenTo(this.model, 'change', this);` function.
+            this.listenTo(this.model, 'change', this.render);
         },
 
         render: function() {
@@ -47,6 +48,7 @@
             // `this.model`.
             // NOTE: Be sure to update the template! We want to add a `complete` class to
             // the .todo-item element whenever the `complete` attribute is true
+            this.model.toggleComplete();
         },
 
         removeTodo: function() {
@@ -57,6 +59,7 @@
             // collection to pick up, and take over with handling destroying the todo, and
             // removing it from the DOM. You can do that by using the `App.Vent.trigger();`
             // function.
+            App.Vent.trigger('remove-todo', this.model);
         },
 
         toggleEditing: function() {
